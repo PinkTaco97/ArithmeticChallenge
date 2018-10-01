@@ -30,19 +30,19 @@
         {
             this.Panel_Question = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Button_Send = new System.Windows.Forms.Button();
-            this.Input_Operator = new System.Windows.Forms.ComboBox();
-            this.Input_Answer = new System.Windows.Forms.TextBox();
-            this.Input_B = new System.Windows.Forms.NumericUpDown();
             this.Input_A = new System.Windows.Forms.NumericUpDown();
+            this.Input_Operator = new System.Windows.Forms.ComboBox();
+            this.Input_B = new System.Windows.Forms.NumericUpDown();
+            this.Output_Answer = new System.Windows.Forms.TextBox();
+            this.Button_Send = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Panel_Array = new System.Windows.Forms.Panel();
             this.Panel_LinkedList = new System.Windows.Forms.Panel();
             this.Panel_BinaryTree = new System.Windows.Forms.Panel();
             this.Panel_Question.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_A)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Input_B)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_Question
@@ -60,17 +60,69 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.panel1.Controls.Add(this.Button_Send);
-            this.panel1.Controls.Add(this.Input_Operator);
             this.panel1.Controls.Add(this.Input_A);
-            this.panel1.Controls.Add(this.Input_Answer);
+            this.panel1.Controls.Add(this.Input_Operator);
             this.panel1.Controls.Add(this.Input_B);
+            this.panel1.Controls.Add(this.Output_Answer);
+            this.panel1.Controls.Add(this.Button_Send);
             this.panel1.Location = new System.Drawing.Point(8, 54);
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(253, 136);
             this.panel1.TabIndex = 2;
+            // 
+            // Input_A
+            // 
+            this.Input_A.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Input_A.Location = new System.Drawing.Point(15, 15);
+            this.Input_A.Margin = new System.Windows.Forms.Padding(10);
+            this.Input_A.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.Input_A.Name = "Input_A";
+            this.Input_A.Size = new System.Drawing.Size(60, 27);
+            this.Input_A.TabIndex = 0;
+            this.Input_A.ValueChanged += new System.EventHandler(this.Input_A_ValueChanged);
+            // 
+            // Input_Operator
+            // 
+            this.Input_Operator.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.Input_Operator.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Input_Operator.Location = new System.Drawing.Point(95, 15);
+            this.Input_Operator.Margin = new System.Windows.Forms.Padding(10);
+            this.Input_Operator.Name = "Input_Operator";
+            this.Input_Operator.Size = new System.Drawing.Size(60, 28);
+            this.Input_Operator.TabIndex = 1;
+            this.Input_Operator.SelectedIndexChanged += new System.EventHandler(this.Input_Operator_SelectedIndexChanged);
+            // 
+            // Input_B
+            // 
+            this.Input_B.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Input_B.Location = new System.Drawing.Point(175, 15);
+            this.Input_B.Margin = new System.Windows.Forms.Padding(10);
+            this.Input_B.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.Input_B.Name = "Input_B";
+            this.Input_B.Size = new System.Drawing.Size(60, 27);
+            this.Input_B.TabIndex = 2;
+            this.Input_B.ValueChanged += new System.EventHandler(this.Input_B_ValueChanged);
+            // 
+            // Output_Answer
+            // 
+            this.Output_Answer.Enabled = false;
+            this.Output_Answer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Output_Answer.Location = new System.Drawing.Point(15, 50);
+            this.Output_Answer.Margin = new System.Windows.Forms.Padding(10);
+            this.Output_Answer.Name = "Output_Answer";
+            this.Output_Answer.Size = new System.Drawing.Size(220, 29);
+            this.Output_Answer.TabIndex = 4;
+            this.Output_Answer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Button_Send
             // 
@@ -79,48 +131,9 @@
             this.Button_Send.Margin = new System.Windows.Forms.Padding(10);
             this.Button_Send.Name = "Button_Send";
             this.Button_Send.Size = new System.Drawing.Size(220, 34);
-            this.Button_Send.TabIndex = 6;
+            this.Button_Send.TabIndex = 3;
             this.Button_Send.Text = "Send";
             this.Button_Send.UseVisualStyleBackColor = true;
-            // 
-            // Input_Operator
-            // 
-            this.Input_Operator.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Input_Operator.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Input_Operator.FormattingEnabled = true;
-            this.Input_Operator.Location = new System.Drawing.Point(95, 15);
-            this.Input_Operator.Margin = new System.Windows.Forms.Padding(10);
-            this.Input_Operator.Name = "Input_Operator";
-            this.Input_Operator.Size = new System.Drawing.Size(60, 28);
-            this.Input_Operator.TabIndex = 5;
-            // 
-            // Input_Answer
-            // 
-            this.Input_Answer.Enabled = false;
-            this.Input_Answer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Input_Answer.Location = new System.Drawing.Point(15, 50);
-            this.Input_Answer.Margin = new System.Windows.Forms.Padding(10);
-            this.Input_Answer.Name = "Input_Answer";
-            this.Input_Answer.Size = new System.Drawing.Size(220, 29);
-            this.Input_Answer.TabIndex = 4;
-            // 
-            // Input_B
-            // 
-            this.Input_B.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Input_B.Location = new System.Drawing.Point(175, 15);
-            this.Input_B.Margin = new System.Windows.Forms.Padding(10);
-            this.Input_B.Name = "Input_B";
-            this.Input_B.Size = new System.Drawing.Size(60, 27);
-            this.Input_B.TabIndex = 2;
-            // 
-            // Input_A
-            // 
-            this.Input_A.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Input_A.Location = new System.Drawing.Point(15, 15);
-            this.Input_A.Margin = new System.Windows.Forms.Padding(10);
-            this.Input_A.Name = "Input_A";
-            this.Input_A.Size = new System.Drawing.Size(60, 27);
-            this.Input_A.TabIndex = 0;
             // 
             // label1
             // 
@@ -178,8 +191,8 @@
             this.Panel_Question.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Input_B)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_A)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Input_B)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -195,7 +208,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.NumericUpDown Input_B;
         private System.Windows.Forms.ComboBox Input_Operator;
-        private System.Windows.Forms.TextBox Input_Answer;
+        private System.Windows.Forms.TextBox Output_Answer;
         private System.Windows.Forms.Button Button_Send;
     }
 }
