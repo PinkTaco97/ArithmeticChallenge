@@ -53,7 +53,7 @@ namespace Instructor
         /// <param name="e"></param>
         private void Input_A_ValueChanged(object sender, EventArgs e)
         {
-            Calculate();
+            Output_Answer.Text = "" + Calculate(Input_A.Value, Input_Operator.SelectedIndex, Input_B.Value);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Instructor
         /// <param name="e"></param>
         private void Input_Operator_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Calculate();
+            Output_Answer.Text = "" + Calculate(Input_A.Value, Input_Operator.SelectedIndex, Input_B.Value);
         }
 
         /// <summary>
@@ -73,20 +73,15 @@ namespace Instructor
         /// <param name="e"></param>
         private void Input_B_ValueChanged(object sender, EventArgs e)
         {
-            Calculate();
+            Output_Answer.Text = "" + Calculate(Input_A.Value, Input_Operator.SelectedIndex, Input_B.Value);
         }
 
-        private decimal Calculate()
+        private decimal Calculate(decimal a, int op, decimal b)
         {
-            //Get the values from the form.
-            //int a = Convert.ToInt32(Input_A.Value);
-            decimal a = Input_A.Value;
-            int op = Input_Operator.SelectedIndex;
-            //int b = Convert.ToInt32(Input_B.Value);
-            decimal b = Input_B.Value;
+            //The output
             decimal x = 0;
 
-            //If the numbers are more than 0.
+            //If the numbers are more than 0. 
             if(a > 0 && b > 0)
             {
                 //perform the correct calculation.
@@ -110,14 +105,14 @@ namespace Instructor
                     case 3:
                         //Divide the 2 numbers.
                         x = a / b;
+
+                        //Round x to 2 decimal places.
+                        x = Math.Round(x, 2);
                         break;
                 }
-
-                //Set the outputs value.
-                Output_Answer.Text = "" + x;
-                return x;
             }
 
+            //return the output
             return x;
         }
     }
