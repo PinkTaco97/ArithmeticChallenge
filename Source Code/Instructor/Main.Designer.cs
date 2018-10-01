@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel_Question = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,15 +38,19 @@
             this.Output_Answer = new System.Windows.Forms.TextBox();
             this.Input_Operator = new System.Windows.Forms.ComboBox();
             this.Input_B = new System.Windows.Forms.NumericUpDown();
-            this.Panel_Array = new System.Windows.Forms.Panel();
             this.ArrayDataTable = new System.Windows.Forms.DataGridView();
             this.Button_Random = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.Panel_Question.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Input_A)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_B)).BeginInit();
-            this.Panel_Array.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ArrayDataTable)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel_Question
@@ -155,17 +159,6 @@
             this.Input_B.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Input_B.ValueChanged += new System.EventHandler(this.Input_B_ValueChanged);
             // 
-            // Panel_Array
-            // 
-            this.Panel_Array.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Panel_Array.Controls.Add(this.ArrayDataTable);
-            this.Panel_Array.Location = new System.Drawing.Point(15, 15);
-            this.Panel_Array.Margin = new System.Windows.Forms.Padding(5);
-            this.Panel_Array.Name = "Panel_Array";
-            this.Panel_Array.Padding = new System.Windows.Forms.Padding(5);
-            this.Panel_Array.Size = new System.Drawing.Size(954, 582);
-            this.Panel_Array.TabIndex = 0;
-            // 
             // ArrayDataTable
             // 
             this.ArrayDataTable.AllowUserToAddRows = false;
@@ -177,27 +170,27 @@
             this.ArrayDataTable.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.ArrayDataTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ArrayDataTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ArrayDataTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ArrayDataTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.ArrayDataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ArrayDataTable.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ArrayDataTable.DefaultCellStyle = dataGridViewCellStyle4;
             this.ArrayDataTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ArrayDataTable.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.ArrayDataTable.Location = new System.Drawing.Point(8, 10);
+            this.ArrayDataTable.Location = new System.Drawing.Point(0, 0);
             this.ArrayDataTable.Margin = new System.Windows.Forms.Padding(5);
             this.ArrayDataTable.MultiSelect = false;
             this.ArrayDataTable.Name = "ArrayDataTable";
@@ -206,7 +199,7 @@
             this.ArrayDataTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.ArrayDataTable.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.ArrayDataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ArrayDataTable.Size = new System.Drawing.Size(936, 562);
+            this.ArrayDataTable.Size = new System.Drawing.Size(946, 562);
             this.ArrayDataTable.TabIndex = 0;
             this.ArrayDataTable.TabStop = false;
             this.ArrayDataTable.SelectionChanged += new System.EventHandler(this.ArrayTable_SelectionChanged);
@@ -223,12 +216,53 @@
             this.Button_Random.UseVisualStyleBackColor = true;
             this.Button_Random.Click += new System.EventHandler(this.Button_Random_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(15, 13);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(954, 586);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.ArrayDataTable);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(946, 560);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Array List";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(946, 560);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Linked List";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(946, 560);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Binary Tree";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 711);
-            this.Controls.Add(this.Panel_Array);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.Panel_Question);
             this.MaximumSize = new System.Drawing.Size(1000, 750);
             this.MinimumSize = new System.Drawing.Size(1000, 750);
@@ -241,8 +275,9 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Input_A)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_B)).EndInit();
-            this.Panel_Array.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ArrayDataTable)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -250,7 +285,6 @@
         #endregion
 
         private System.Windows.Forms.Panel Panel_Question;
-        private System.Windows.Forms.Panel Panel_Array;
         private System.Windows.Forms.NumericUpDown Input_A;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.NumericUpDown Input_B;
@@ -260,5 +294,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView ArrayDataTable;
         private System.Windows.Forms.Button Button_Random;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
     }
 }
