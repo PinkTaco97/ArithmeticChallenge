@@ -9,19 +9,42 @@ namespace Instructor
     /// <summary>
     /// The Question Class
     /// </summary>
-    class Question
+    public class Question
     {
-        //The first number in the equation.
-        int a;
+        /// <summary>
+        /// The first number in the question.
+        /// </summary>
+        public decimal a;
 
-        //The operator in the equation.
-        int op;
+        /// <summary>
+        /// The operator in the question.
+        /// </summary>
+        public int operatorIndex;
 
-        //The second number in the equation.
-        int b;
+        /// <summary>
+        /// The operator symbol.
+        /// </summary>
+        public string operatorSymbol;
 
-        //The answer to the equation.
-        float x;
+        /// <summary>
+        /// The second number in the question.
+        /// </summary>
+        public decimal b;
+
+        /// <summary>
+        /// The answer to the question.
+        /// </summary>
+        public decimal x;
+
+        /// <summary>
+        /// Whether the question was answered correctly.
+        /// </summary>
+        public bool correct = false;
+
+        /// <summary>
+        /// Whether the question has been answered.
+        /// </summary>
+        public bool answered = false;
 
         /// <summary>
         /// The Constructor
@@ -29,35 +52,34 @@ namespace Instructor
         /// <param name="A">The first number in the equation.</param>
         /// <param name="Operator">The operator in the equation.</param>
         /// <param name="B">The second number in the equation.</param>
-        public Question(int A, int Operator, int B)
+        public Question(decimal A, int Operator, decimal B)
         {
             //Set the questions vaiables.
             this.a = A;
-            this.op = Operator;
+            this.operatorIndex = Operator;
             this.b = B;
-        }
 
-        public void Solve()
-        {
-            switch (op)
+            switch (Operator)
             {
-                // Add +
                 case 0:
+                    //Set the questions symbol.
+                    this.operatorSymbol = "+";
                     x = a + b;
                     break;
-
-                // Minus -
                 case 1:
+                    //Set the questions symbol.
+                    this.operatorSymbol = "-";
                     x = a - b;
                     break;
-
-                // Times *
                 case 2:
+                    //Set the questions symbol.
+                    this.operatorSymbol = "x";
                     x = a * b;
                     break;
-
-                // Divide /
                 case 3:
+                    //Set the questions symbol.
+                    char symbol = '\u00F7';
+                    this.operatorSymbol = "" + symbol;
                     x = a / b;
                     break;
             }

@@ -28,31 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel_Question = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Button_Send = new System.Windows.Forms.Button();
             this.Input_A = new System.Windows.Forms.NumericUpDown();
+            this.Output_Answer = new System.Windows.Forms.TextBox();
             this.Input_Operator = new System.Windows.Forms.ComboBox();
             this.Input_B = new System.Windows.Forms.NumericUpDown();
-            this.Output_Answer = new System.Windows.Forms.TextBox();
-            this.Button_Send = new System.Windows.Forms.Button();
             this.Panel_Array = new System.Windows.Forms.Panel();
-            this.Panel_LinkedList = new System.Windows.Forms.Panel();
-            this.Panel_BinaryTree = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ArrayDataTable = new System.Windows.Forms.DataGridView();
+            this.Button_Random = new System.Windows.Forms.Button();
             this.Panel_Question.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Input_A)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_B)).BeginInit();
             this.Panel_Array.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ArrayDataTable)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_Question
             // 
             this.Panel_Question.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Panel_Question.Controls.Add(this.panel1);
-            this.Panel_Question.Location = new System.Drawing.Point(15, 15);
+            this.Panel_Question.Location = new System.Drawing.Point(15, 607);
             this.Panel_Question.Margin = new System.Windows.Forms.Padding(5);
             this.Panel_Question.Name = "Panel_Question";
             this.Panel_Question.Padding = new System.Windows.Forms.Padding(5);
@@ -62,6 +63,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panel1.Controls.Add(this.Button_Random);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.Button_Send);
             this.panel1.Controls.Add(this.Input_A);
@@ -74,6 +76,29 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(936, 68);
             this.panel1.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(335, 15);
+            this.label2.Margin = new System.Windows.Forms.Padding(10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 38);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "=";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Button_Send
+            // 
+            this.Button_Send.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Send.Location = new System.Drawing.Point(817, 16);
+            this.Button_Send.Margin = new System.Windows.Forms.Padding(5);
+            this.Button_Send.Name = "Button_Send";
+            this.Button_Send.Size = new System.Drawing.Size(109, 38);
+            this.Button_Send.TabIndex = 3;
+            this.Button_Send.Text = "Send";
+            this.Button_Send.UseVisualStyleBackColor = true;
+            this.Button_Send.Click += new System.EventHandler(this.Button_Send_Click);
             // 
             // Input_A
             // 
@@ -90,6 +115,17 @@
             this.Input_A.TabIndex = 0;
             this.Input_A.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Input_A.ValueChanged += new System.EventHandler(this.Input_A_ValueChanged);
+            // 
+            // Output_Answer
+            // 
+            this.Output_Answer.Enabled = false;
+            this.Output_Answer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Output_Answer.Location = new System.Drawing.Point(385, 16);
+            this.Output_Answer.Margin = new System.Windows.Forms.Padding(10);
+            this.Output_Answer.Name = "Output_Answer";
+            this.Output_Answer.Size = new System.Drawing.Size(280, 38);
+            this.Output_Answer.TabIndex = 4;
+            this.Output_Answer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Input_Operator
             // 
@@ -119,83 +155,79 @@
             this.Input_B.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Input_B.ValueChanged += new System.EventHandler(this.Input_B_ValueChanged);
             // 
-            // Output_Answer
-            // 
-            this.Output_Answer.Enabled = false;
-            this.Output_Answer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Output_Answer.Location = new System.Drawing.Point(385, 16);
-            this.Output_Answer.Margin = new System.Windows.Forms.Padding(10);
-            this.Output_Answer.Name = "Output_Answer";
-            this.Output_Answer.Size = new System.Drawing.Size(424, 38);
-            this.Output_Answer.TabIndex = 4;
-            this.Output_Answer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // Button_Send
-            // 
-            this.Button_Send.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button_Send.Location = new System.Drawing.Point(829, 15);
-            this.Button_Send.Margin = new System.Windows.Forms.Padding(10);
-            this.Button_Send.Name = "Button_Send";
-            this.Button_Send.Size = new System.Drawing.Size(92, 38);
-            this.Button_Send.TabIndex = 3;
-            this.Button_Send.Text = "Send";
-            this.Button_Send.UseVisualStyleBackColor = true;
-            // 
             // Panel_Array
             // 
-            this.Panel_Array.BackColor = System.Drawing.SystemColors.Highlight;
-            this.Panel_Array.Controls.Add(this.dataGridView1);
-            this.Panel_Array.Location = new System.Drawing.Point(15, 114);
+            this.Panel_Array.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Panel_Array.Controls.Add(this.ArrayDataTable);
+            this.Panel_Array.Location = new System.Drawing.Point(15, 15);
             this.Panel_Array.Margin = new System.Windows.Forms.Padding(5);
             this.Panel_Array.Name = "Panel_Array";
-            this.Panel_Array.Size = new System.Drawing.Size(954, 192);
+            this.Panel_Array.Padding = new System.Windows.Forms.Padding(5);
+            this.Panel_Array.Size = new System.Drawing.Size(954, 582);
             this.Panel_Array.TabIndex = 0;
             // 
-            // Panel_LinkedList
+            // ArrayDataTable
             // 
-            this.Panel_LinkedList.BackColor = System.Drawing.SystemColors.Highlight;
-            this.Panel_LinkedList.Location = new System.Drawing.Point(15, 316);
-            this.Panel_LinkedList.Margin = new System.Windows.Forms.Padding(5);
-            this.Panel_LinkedList.Name = "Panel_LinkedList";
-            this.Panel_LinkedList.Size = new System.Drawing.Size(954, 189);
-            this.Panel_LinkedList.TabIndex = 1;
+            this.ArrayDataTable.AllowUserToAddRows = false;
+            this.ArrayDataTable.AllowUserToDeleteRows = false;
+            this.ArrayDataTable.AllowUserToResizeColumns = false;
+            this.ArrayDataTable.AllowUserToResizeRows = false;
+            this.ArrayDataTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.ArrayDataTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.ArrayDataTable.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ArrayDataTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ArrayDataTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ArrayDataTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.ArrayDataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ArrayDataTable.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ArrayDataTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.ArrayDataTable.GridColor = System.Drawing.SystemColors.ButtonFace;
+            this.ArrayDataTable.Location = new System.Drawing.Point(8, 10);
+            this.ArrayDataTable.Margin = new System.Windows.Forms.Padding(5);
+            this.ArrayDataTable.MultiSelect = false;
+            this.ArrayDataTable.Name = "ArrayDataTable";
+            this.ArrayDataTable.ReadOnly = true;
+            this.ArrayDataTable.RowHeadersVisible = false;
+            this.ArrayDataTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.ArrayDataTable.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ArrayDataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ArrayDataTable.Size = new System.Drawing.Size(936, 562);
+            this.ArrayDataTable.TabIndex = 0;
+            this.ArrayDataTable.TabStop = false;
+            this.ArrayDataTable.SelectionChanged += new System.EventHandler(this.ArrayTable_SelectionChanged);
             // 
-            // Panel_BinaryTree
+            // Button_Random
             // 
-            this.Panel_BinaryTree.BackColor = System.Drawing.SystemColors.Highlight;
-            this.Panel_BinaryTree.Location = new System.Drawing.Point(15, 515);
-            this.Panel_BinaryTree.Margin = new System.Windows.Forms.Padding(5);
-            this.Panel_BinaryTree.Name = "Panel_BinaryTree";
-            this.Panel_BinaryTree.Size = new System.Drawing.Size(954, 181);
-            this.Panel_BinaryTree.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(335, 15);
-            this.label2.Margin = new System.Windows.Forms.Padding(10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 38);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "=";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(936, 166);
-            this.dataGridView1.TabIndex = 0;
+            this.Button_Random.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Random.Location = new System.Drawing.Point(680, 16);
+            this.Button_Random.Margin = new System.Windows.Forms.Padding(5);
+            this.Button_Random.Name = "Button_Random";
+            this.Button_Random.Size = new System.Drawing.Size(129, 38);
+            this.Button_Random.TabIndex = 6;
+            this.Button_Random.Text = "Random";
+            this.Button_Random.UseVisualStyleBackColor = true;
+            this.Button_Random.Click += new System.EventHandler(this.Button_Random_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 711);
-            this.Controls.Add(this.Panel_BinaryTree);
-            this.Controls.Add(this.Panel_LinkedList);
             this.Controls.Add(this.Panel_Array);
             this.Controls.Add(this.Panel_Question);
             this.MaximumSize = new System.Drawing.Size(1000, 750);
@@ -210,7 +242,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Input_A)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_B)).EndInit();
             this.Panel_Array.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ArrayDataTable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -219,8 +251,6 @@
 
         private System.Windows.Forms.Panel Panel_Question;
         private System.Windows.Forms.Panel Panel_Array;
-        private System.Windows.Forms.Panel Panel_LinkedList;
-        private System.Windows.Forms.Panel Panel_BinaryTree;
         private System.Windows.Forms.NumericUpDown Input_A;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.NumericUpDown Input_B;
@@ -228,6 +258,7 @@
         private System.Windows.Forms.TextBox Output_Answer;
         private System.Windows.Forms.Button Button_Send;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ArrayDataTable;
+        private System.Windows.Forms.Button Button_Random;
     }
 }
