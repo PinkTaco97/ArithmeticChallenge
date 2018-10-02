@@ -9,11 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
+using Newtonsoft.Json;
 
 namespace Instructor
 {
     public partial class Connecting : Form
     {
+        const int PORT_NO = 5000;
+        const string SERVER_IP = "127.0.0.1";
+
         /// <summary>
         /// The Constructor.
         /// </summary>
@@ -30,6 +34,11 @@ namespace Instructor
         /// <param name="e"></param>
         private void Connecting_Load(object sender, EventArgs e)
         {
+            
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
             //Try to connect to the student application.
             Connect();
         }
@@ -39,50 +48,33 @@ namespace Instructor
         /// </summary>
         public void Connect()
         {
-            try
-            {
-                IPAddress ipAd = IPAddress.Parse("192.168.1.14");
-                // use local m/c IP address, and 
-                // use the same in the client
+            MessageBox.Show("Sending Question");
+            //---listen at the specified IP and port no.---
+            IPAddress localAdd = IPAddress.Parse(SERVER_IP);
+            TcpListener listener = new TcpListener(localAdd, PORT_NO);
+            Output.Text = "Listening...";
+            listener.Start();
 
-                /* Initializes the Listener */
-                TcpListener listener = new TcpListener(ipAd, 8001);
+            //---incoming client connected---
+            TcpClient client = listener.AcceptTcpClient();
 
-                /* Start Listeneting at the specified port */
-                listener.Start();
+            //---get the incoming data through a network stream---
+            NetworkStream nwStream = client.GetStream();
+            byte[] buffer = new byte[client.ReceiveBufferSize];
 
-                Output.Text = "Connecting...";
-                ProgressBar.Value = 25;
+            //---read incoming stream---
+            int bytesRead = nwStream.Read(buffer, 0, client.ReceiveBufferSize);
 
-                Console.WriteLine(listener.Pending());
+            //---convert the data received into a string---
+            string dataReceived = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+            Console.WriteLine("Received : " + dataReceived);
 
-                //while (!listener.Pending())
-                //{
-                    Socket s = listener.AcceptSocket();
-                    Output.Text = "Connection accepted from " + s.RemoteEndPoint;
-                    ProgressBar.Value = 50;
-
-                    byte[] b = new byte[100];
-                    int k = s.Receive(b);
-                    Output.Text = "Recieved...";
-                    ProgressBar.Value = 75;
-                    for (int i = 0; i < k; i++)
-                        Console.Write(Convert.ToChar(b[i]));
-
-                    ASCIIEncoding asen = new ASCIIEncoding();
-                    s.Send(asen.GetBytes("The string was recieved by the server."));
-                    Console.WriteLine("\nSent Acknowledgement");
-                    /* clean up */
-                    s.Close();
-                //}
-                
-                listener.Stop();
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error..... " + e.StackTrace);
-            }
+            //---write back the text to the client---
+            Console.WriteLine("Sending back : " + dataReceived);
+            nwStream.Write(buffer, 0, bytesRead);
+            client.Close();
+            listener.Stop();
+            Console.ReadLine();
         }
     }
 }

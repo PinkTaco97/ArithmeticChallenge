@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel_Question = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Button_Random = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.Button_Send = new System.Windows.Forms.Button();
             this.Input_A = new System.Windows.Forms.NumericUpDown();
@@ -39,11 +40,11 @@
             this.Input_Operator = new System.Windows.Forms.ComboBox();
             this.Input_B = new System.Windows.Forms.NumericUpDown();
             this.ArrayDataTable = new System.Windows.Forms.DataGridView();
-            this.Button_Random = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.Panel_Question.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Input_A)).BeginInit();
@@ -80,6 +81,18 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(936, 68);
             this.panel1.TabIndex = 2;
+            // 
+            // Button_Random
+            // 
+            this.Button_Random.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Random.Location = new System.Drawing.Point(680, 16);
+            this.Button_Random.Margin = new System.Windows.Forms.Padding(5);
+            this.Button_Random.Name = "Button_Random";
+            this.Button_Random.Size = new System.Drawing.Size(129, 38);
+            this.Button_Random.TabIndex = 6;
+            this.Button_Random.Text = "Random";
+            this.Button_Random.UseVisualStyleBackColor = true;
+            this.Button_Random.Click += new System.EventHandler(this.Button_Random_Click);
             // 
             // label2
             // 
@@ -170,24 +183,24 @@
             this.ArrayDataTable.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.ArrayDataTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ArrayDataTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ArrayDataTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ArrayDataTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ArrayDataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ArrayDataTable.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ArrayDataTable.DefaultCellStyle = dataGridViewCellStyle2;
             this.ArrayDataTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ArrayDataTable.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.ArrayDataTable.Location = new System.Drawing.Point(0, 0);
@@ -203,18 +216,6 @@
             this.ArrayDataTable.TabIndex = 0;
             this.ArrayDataTable.TabStop = false;
             this.ArrayDataTable.SelectionChanged += new System.EventHandler(this.ArrayTable_SelectionChanged);
-            // 
-            // Button_Random
-            // 
-            this.Button_Random.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button_Random.Location = new System.Drawing.Point(680, 16);
-            this.Button_Random.Margin = new System.Windows.Forms.Padding(5);
-            this.Button_Random.Name = "Button_Random";
-            this.Button_Random.Size = new System.Drawing.Size(129, 38);
-            this.Button_Random.TabIndex = 6;
-            this.Button_Random.Text = "Random";
-            this.Button_Random.UseVisualStyleBackColor = true;
-            this.Button_Random.Click += new System.EventHandler(this.Button_Random_Click);
             // 
             // tabControl1
             // 
@@ -257,11 +258,19 @@
             this.tabPage3.Text = "Binary Tree";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(15, 693);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(954, 23);
+            this.progressBar.TabIndex = 2;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 711);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.Panel_Question);
             this.MaximumSize = new System.Drawing.Size(1000, 750);
@@ -283,7 +292,6 @@
         }
 
         #endregion
-
         private System.Windows.Forms.Panel Panel_Question;
         private System.Windows.Forms.NumericUpDown Input_A;
         private System.Windows.Forms.Panel panel1;
@@ -298,5 +306,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }

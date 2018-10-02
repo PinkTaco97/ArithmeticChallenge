@@ -30,6 +30,7 @@
         {
             this.Output = new System.Windows.Forms.Label();
             this.ProgressBar = new System.Windows.Forms.ProgressBar();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // Output
@@ -54,6 +55,10 @@
             this.ProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.ProgressBar.TabIndex = 1;
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
             // Connecting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -76,5 +81,6 @@
 
         private System.Windows.Forms.Label Output;
         private System.Windows.Forms.ProgressBar ProgressBar;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

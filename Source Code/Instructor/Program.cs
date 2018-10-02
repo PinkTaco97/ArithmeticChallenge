@@ -16,7 +16,7 @@ namespace Instructor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Connecting());
+            Application.Run(new Main());
         }
     }
 }

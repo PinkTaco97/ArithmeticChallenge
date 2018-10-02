@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Sockets;
+using Newtonsoft.Json;
 
 namespace Instructor
 {
@@ -171,11 +174,10 @@ namespace Instructor
         /// <param name="e"></param>
         private void Button_Send_Click(object sender, EventArgs e)
         {
-            //Add the question to the array.
-            questions.Add(new Question(Input_A.Value, Input_Operator.SelectedIndex, Input_B.Value));
-
-            //Update the array table.
-            UpdateArrayTable();
+            Question question = new Question(Input_A.Value, Input_Operator.SelectedIndex, Input_B.Value);
+            
+            //Connect to the Student and send the question
+            SendQuestion(question);
         }
 
         /// <summary>
@@ -254,6 +256,98 @@ namespace Instructor
             Input_Operator.SelectedIndex = op;
             Input_B.Value = b;
 
+        }
+
+        /// <summary>
+        /// Connect and send a question to the student application.
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="port"></param>
+        /// <param name="question"></param>
+        public void SendQuestion(Question question)
+        {
+            //The IP Address of the student.
+            string ip = "127.0.0.1";
+
+            //The open port.
+            int port = 5000;
+
+            //Convert the Question Object to a JSON string.
+            string json = JsonConvert.SerializeObject(question);
+
+            //Try to create a TCP connection to the student application.
+            try
+            {
+                TcpClient client = new TcpClient(ip, port);
+
+                //Reference to the network stream.
+                NetworkStream stream = client.GetStream();
+
+                //Convert the JSON to an array of bytes.
+                byte[] data = ASCIIEncoding.ASCII.GetBytes(json);
+
+                //Send the question.
+                stream.Write(data, 0, data.Length);
+
+                //Listen for an answer.
+                ListenForAnswer();
+
+                //Close the connection.
+                client.Close();
+            }
+            catch (Exception ex)
+            {
+                //Print the exception to the console.
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Listens for an answer for a question.
+        /// </summary>
+        public void ListenForAnswer()
+        {
+            //The IP Address.
+            string ip = "127.0.0.1";
+
+            //The open port.
+            int port = 5000;
+
+            //Convert the string to an IPAddress.
+            IPAddress IP = IPAddress.Parse(ip);
+
+            //Create a TCP Listener.
+            TcpListener listener = new TcpListener(IP, port);
+
+            //Start listening.
+            listener.Start();
+
+            //Reference to the Connected Client.
+            TcpClient client = listener.AcceptTcpClient();
+
+            //Get the incoming data through a network stream.
+            NetworkStream stream = client.GetStream();
+
+            //Create a buffer to hold the incoming data.
+            byte[] buffer = new byte[client.ReceiveBufferSize];
+
+            //Read the incoming stream.
+            int bytesRead = stream.Read(buffer, 0, client.ReceiveBufferSize);
+
+            //Convert the data received into a string.
+            string dataReceived = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+
+            //Add the question to the array.
+            //questions.Add(question);
+
+            //Update the array table.
+            //UpdateArrayTable();
+
+            //Close the Client connection.
+            client.Close();
+
+            //Stop listening for an answer.
+            listener.Stop();
         }
     }
 }
