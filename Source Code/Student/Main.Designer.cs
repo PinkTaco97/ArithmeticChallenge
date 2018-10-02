@@ -28,9 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Main
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Main";
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximumSize = new System.Drawing.Size(500, 500);
+            this.MinimumSize = new System.Drawing.Size(500, 500);
+            this.Name = "Main";
+            this.Padding = new System.Windows.Forms.Padding(5);
+            this.ShowIcon = false;
+            this.Text = "Student";
+            this.Shown += new System.EventHandler(this.Main_Shown);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

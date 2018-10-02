@@ -311,7 +311,7 @@ namespace Instructor
             string ip = "127.0.0.1";
 
             //The open port.
-            int port = 5000;
+            int port = 5001;
 
             //Convert the string to an IPAddress.
             IPAddress IP = IPAddress.Parse(ip);
@@ -336,6 +336,8 @@ namespace Instructor
 
             //Convert the data received into a string.
             string dataReceived = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+
+            MessageBox.Show(dataReceived);
 
             //Add the question to the array.
             //questions.Add(question);
