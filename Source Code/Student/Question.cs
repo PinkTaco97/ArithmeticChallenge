@@ -44,7 +44,7 @@ namespace Student
         /// <summary>
         /// Whether the question has been answered.
         /// </summary>
-        public bool answered = false;
+        public decimal answer;
 
         /// <summary>
         /// The Constructor
@@ -82,6 +82,22 @@ namespace Student
                     this.operatorSymbol = "" + symbol;
                     x = a / b;
                     break;
+            }
+        }
+
+        /// <summary>
+        /// Marks the question.
+        /// </summary>
+        public void Mark()
+        {
+            //Check whether the answer == the correct answer.
+            if (answer == x)
+            {
+                correct = true;
+            }
+            else
+            {
+                correct = false;
             }
         }
     }

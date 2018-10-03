@@ -210,11 +210,6 @@ namespace Instructor
 
                 //Add the row to the table.
                 arrayTable.Rows.Add(row);
-
-                if (!question.answered)
-                {
-                    unansweredQuestions.Add(ArrayDataTable.RowCount - 1);
-                }
             }
 
             foreach (int i in unansweredQuestions)

@@ -15,6 +15,13 @@ namespace Student
 {
     public partial class Main : Form
     {
+
+        //The current Question.
+        Question question;
+
+        /// <summary>
+        /// The constructor.
+        /// </summary>
         public Main()
         {
             InitializeComponent();
@@ -27,64 +34,37 @@ namespace Student
         /// <param name="e"></param>
         private void Main_Shown(object sender, EventArgs e)
         {
-            //Start to listen for a question.
+            //Start listening for a question.
             ListenForQuestion();
         }
 
         /// <summary>
-        /// Called when we are waiting for a question.
+        /// Start listening for a question.
         /// </summary>
         public void ListenForQuestion()
         {
-            //The IP Address.
-            string ip = "127.0.0.1";
+            //Set the labels text
+            Label.Text = "Waiting for Question...";
 
-            //The open port.
-            int port = 5000;
-
-            //Convert the string to an IPAddress.
-            IPAddress IP = IPAddress.Parse(ip);
-
-            //Create a TCP Listener.
-            TcpListener listener = new TcpListener(IP, port);
-
-            //Start listening.
-            listener.Start();
-
-            //Reference to the Connected Client.
-            TcpClient client = listener.AcceptTcpClient();
-
-            //Get the incoming data through a network stream.
-            NetworkStream stream = client.GetStream();
-
-            //Create a buffer to hold the incoming data.
-            byte[] buffer = new byte[client.ReceiveBufferSize];
-
-            //Read the incoming stream.
-            int bytesRead = stream.Read(buffer, 0, client.ReceiveBufferSize);
-
-            //Convert the data received into a string.
-            string output = Encoding.ASCII.GetString(buffer, 0, bytesRead);
-
-            //Deserialize the Question object.
-            Question question = JsonConvert.DeserializeObject<Question>(output);
-
-            //Alert the user.
-            MessageBox.Show(question.a + " " + question.operatorSymbol + " " + question.b + " = " + question.x);
-
-            //Close the Client connection.
-            client.Close();
-
-            //Stop listening for an answer.
-            listener.Stop();
+            // Start the asynchronous operation.
+            backgroundWorker.RunWorkerAsync();
         }
 
         /// <summary>
         /// Connect and send the question back to the instructor application.
         /// </summary>
         /// <param name="question"></param>
-        public void SendQuestion(Question question)
+        public void SendQuestion()
         {
+            //Hide the Loading panel.
+            Panel_Answer.Visible = false;
+
+            //Show the Answer panel.
+            Panel_Loading.Visible = true;
+
+            //Set the labels text
+            Label.Text = "Sending Answer...";
+
             //The IP Address of the student.
             string ip = "127.0.0.1";
 
@@ -118,6 +98,102 @@ namespace Student
             {
                 //Print the exception to the console.
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Called when the application needs to wait for a question.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ListenForQuestion(object sender, DoWorkEventArgs e)
+        {
+            //The IP Address.
+            string ip = "127.0.0.1";
+
+            //The open port.
+            int port = 5000;
+
+            //Convert the string to an IPAddress.
+            IPAddress IP = IPAddress.Parse(ip);
+
+            //Create a TCP Listener.
+            TcpListener listener = new TcpListener(IP, port);
+
+            //Start listening.
+            listener.Start();
+
+            //Reference to the Connected Client.
+            TcpClient client = listener.AcceptTcpClient();
+
+            //Get the incoming data through a network stream.
+            NetworkStream stream = client.GetStream();
+
+            //Create a buffer to hold the incoming data.
+            byte[] buffer = new byte[client.ReceiveBufferSize];
+
+            //Read the incoming stream.
+            int bytesRead = stream.Read(buffer, 0, client.ReceiveBufferSize);
+
+            //Convert the data received into a string.
+            string output = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+
+            //Deserialize the Question object.
+            question = JsonConvert.DeserializeObject<Question>(output);            
+
+            //Close the Client connection.
+            client.Close();
+
+            //Stop listening for an answer.
+            listener.Stop();
+        }
+
+        /// <summary>
+        /// Called when the application is sent a question.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FoundQuestion(object sender, RunWorkerCompletedEventArgs e)
+        {
+            //Hide the Loading panel.
+            Panel_Loading.Visible = false;
+
+            //Show the Answer panel.
+            Panel_Answer.Visible = true;
+
+            //Set the question.
+            Output.Text = question.a.ToString("0.##") + " " + question.operatorSymbol + " " + question.b.ToString("0.##") + " =";
+        }
+
+        /// <summary>
+        /// Called when the Send button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Send_Click(object sender, EventArgs e)
+        {
+            //The answer.
+            decimal answer;
+
+            //If the user entered a number.
+            if (decimal.TryParse(Input.Text, out answer))
+            {
+                //Set the questions answer.
+                question.answer = answer;
+
+                //Mark the question.
+                question.Mark();
+
+                //Send the question.
+                SendQuestion();
+            }
+            else
+            {
+                //Alert the user to enter a number.
+                MessageBox.Show("Please enter a number.");
+
+                //Empty what the user entered.
+                Input.Text = "";
             }
         }
     }
