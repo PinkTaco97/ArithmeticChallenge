@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel_Question = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Button_Random = new System.Windows.Forms.Button();
@@ -44,7 +44,11 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.Panel_Waiting = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.Panel_Question.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Input_A)).BeginInit();
@@ -52,13 +56,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.ArrayDataTable)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.Panel_Waiting.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel_Question
             // 
             this.Panel_Question.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Panel_Question.Controls.Add(this.panel1);
-            this.Panel_Question.Location = new System.Drawing.Point(15, 607);
+            this.Panel_Question.Location = new System.Drawing.Point(15, 603);
             this.Panel_Question.Margin = new System.Windows.Forms.Padding(5);
             this.Panel_Question.Name = "Panel_Question";
             this.Panel_Question.Padding = new System.Windows.Forms.Padding(5);
@@ -183,24 +189,24 @@
             this.ArrayDataTable.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.ArrayDataTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ArrayDataTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ArrayDataTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ArrayDataTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.ArrayDataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ArrayDataTable.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ArrayDataTable.DefaultCellStyle = dataGridViewCellStyle4;
             this.ArrayDataTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ArrayDataTable.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.ArrayDataTable.Location = new System.Drawing.Point(0, 0);
@@ -258,21 +264,62 @@
             this.tabPage3.Text = "Binary Tree";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // Panel_Waiting
+            // 
+            this.Panel_Waiting.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Panel_Waiting.Controls.Add(this.panel2);
+            this.Panel_Waiting.Location = new System.Drawing.Point(15, 605);
+            this.Panel_Waiting.Margin = new System.Windows.Forms.Padding(5);
+            this.Panel_Waiting.Name = "Panel_Waiting";
+            this.Panel_Waiting.Padding = new System.Windows.Forms.Padding(5);
+            this.Panel_Waiting.Size = new System.Drawing.Size(954, 89);
+            this.Panel_Waiting.TabIndex = 2;
+            this.Panel_Waiting.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.progressBar);
+            this.panel2.Location = new System.Drawing.Point(10, 10);
+            this.panel2.Margin = new System.Windows.Forms.Padding(5);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(5);
+            this.panel2.Size = new System.Drawing.Size(936, 68);
+            this.panel2.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(920, 34);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Waiting for Answer...";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(15, 693);
+            this.progressBar.Location = new System.Drawing.Point(0, 42);
+            this.progressBar.MarqueeAnimationSpeed = 10;
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(954, 23);
-            this.progressBar.TabIndex = 2;
+            this.progressBar.Size = new System.Drawing.Size(936, 26);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar.TabIndex = 0;
+            // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ListenForAnswer);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.FoundAnswer);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 711);
-            this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.Panel_Question);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.Panel_Waiting);
             this.MaximumSize = new System.Drawing.Size(1000, 750);
             this.MinimumSize = new System.Drawing.Size(1000, 750);
             this.Name = "Main";
@@ -287,6 +334,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ArrayDataTable)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.Panel_Waiting.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -306,6 +355,10 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Panel Panel_Waiting;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }

@@ -59,7 +59,32 @@ namespace Instructor
             this.operatorIndex = Operator;
             this.b = B;
 
-            switch (Operator)
+            //Refresh the questions symbol.
+            RefreshSymbol();
+        }
+
+        /// <summary>
+        /// Marks the question.
+        /// </summary>
+        public void Mark()
+        {
+            //Check whether the answer == the correct answer.
+            if (answer == x)
+            {
+                correct = true;
+            }
+            else
+            {
+                correct = false;
+            }
+        }
+
+        /// <summary>
+        /// Updates the questions symbol.
+        /// </summary>
+        public void RefreshSymbol()
+        {
+            switch (operatorIndex)
             {
                 case 0:
                     //Set the questions symbol.
@@ -82,22 +107,6 @@ namespace Instructor
                     this.operatorSymbol = "" + symbol;
                     x = a / b;
                     break;
-            }
-        }
-
-        /// <summary>
-        /// Marks the question.
-        /// </summary>
-        public void Mark()
-        {
-            //Check whether the answer == the correct answer.
-            if (answer == x)
-            {
-                correct = true;
-            }
-            else
-            {
-                correct = false;
             }
         }
     }

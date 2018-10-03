@@ -103,6 +103,7 @@ namespace Student
 
         /// <summary>
         /// Called when the application needs to wait for a question.
+        /// Completes this task on another thread.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -139,7 +140,10 @@ namespace Student
             string output = Encoding.ASCII.GetString(buffer, 0, bytesRead);
 
             //Deserialize the Question object.
-            question = JsonConvert.DeserializeObject<Question>(output);            
+            question = JsonConvert.DeserializeObject<Question>(output);
+
+            //Refresh the Symbol.
+            question.RefreshSymbol();
 
             //Close the Client connection.
             client.Close();
@@ -149,7 +153,7 @@ namespace Student
         }
 
         /// <summary>
-        /// Called when the application is sent a question.
+        /// Called when the application recieves a question.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -184,17 +188,57 @@ namespace Student
                 //Mark the question.
                 question.Mark();
 
+                //If the question was correct.
+                if (question.correct)
+                {
+                    //Alert the user that the question was corret.
+                    MessageBox.Show("Correct!");
+                }
+                else
+                {
+                    //Alert the user that the question was incorret.
+                    MessageBox.Show("Incorrect!");
+                }
+
                 //Send the question.
                 SendQuestion();
             }
             else
             {
                 //Alert the user to enter a number.
-                MessageBox.Show("Please enter a number.");
-
-                //Empty what the user entered.
-                Input.Text = "";
+                MessageBox.Show("Please enter a number.");  
             }
+
+            //Empty what the user entered.
+            Input.Text = "";
+        }
+
+        /// <summary>
+        /// Called when a key is down on the Input Text Field.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Input_KeyDown(object sender, KeyEventArgs e)
+        {
+            //If the Key was the Enter Key.
+            if (e.KeyCode == Keys.Enter)
+            {
+                Button_Send_Click(sender, e);
+            }
+        }
+
+        /// <summary>
+        /// Called when a key is pressed on the Input Text Field.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Input_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Only allow Numbers. Shift and Enter.
+            /*if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back) || (e.KeyChar == (char)Keys.Enter)) || (e.KeyChar == Convert.ToChar(45)))
+            {
+                e.Handled = true;
+            }*/
         }
     }
 }

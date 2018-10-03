@@ -29,6 +29,12 @@ namespace Instructor
         List<Question> questions = new List<Question>();
 
         /// <summary>
+        /// Colors.
+        /// </summary>
+        Color green = Color.FromArgb(255, 0, 204, 102);
+        Color red = Color.FromArgb(255, 204, 0, 0);
+
+        /// <summary>
         /// The Constructor.
         /// </summary>
         public Main()
@@ -66,7 +72,6 @@ namespace Instructor
             arrayTable.Columns.Add("Operator");
             arrayTable.Columns.Add("B");
             arrayTable.Columns.Add("=");
-            arrayTable.Columns.Add("X");
             arrayTable.Columns.Add("Answer");
 
             //Set the Student Datas Data Source.
@@ -191,8 +196,8 @@ namespace Instructor
             //Create the new row.
             DataRow row;
 
-            //List of all unanswered questions.
-            List<int> unansweredQuestions = new List<int>();
+            //The row index.
+            int count = 0;
 
             //Foreach question in the array.
             foreach (Question question in questions)
@@ -201,20 +206,29 @@ namespace Instructor
                 row = arrayTable.NewRow();
 
                 //Add the data to the row.
-                row[0] = question.a;
+                row[0] = question.a.ToString("0.##");
                 row[1] = question.operatorSymbol;
-                row[2] = question.b;
+                row[2] = question.b.ToString("0.##");
                 row[3] = "=";
-                row[4] = question.x;
-                row[5] = "";
+                row[4] = question.answer.ToString("0.##");
 
                 //Add the row to the table.
                 arrayTable.Rows.Add(row);
-            }
 
-            foreach (int i in unansweredQuestions)
-            {
-                ArrayDataTable.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+                //If the question was answered correctly.
+                if (question.correct)
+                {
+                    //Set the background color of the row in the DataTable.
+                    ArrayDataTable.Rows[count].DefaultCellStyle.BackColor = green;
+                }
+                else
+                {
+                    //Set the background color of the row in the DataTable.
+                    ArrayDataTable.Rows[count].DefaultCellStyle.BackColor = red;
+                }
+
+                //Add 1 to the count.
+                count++;
             }
 
             //Clear the current selection.
@@ -294,6 +308,10 @@ namespace Instructor
             {
                 //Print the exception to the console.
                 Console.WriteLine(ex.Message);
+
+                //Alert the user that the question wasnt sent.
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -301,6 +319,24 @@ namespace Instructor
         /// Listens for an answer for a question.
         /// </summary>
         public void ListenForAnswer()
+        {
+            //Hide the Question Panel.
+            Panel_Question.Visible = false;
+
+            //Show the Waiting Panel.
+            Panel_Waiting.Visible = true;
+
+            //Start the background worker
+            backgroundWorker.RunWorkerAsync();
+        }
+
+        /// <summary>
+        /// Called when the application needs to wait for an answer.
+        /// Completes this task on another thread.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ListenForAnswer(object sender, DoWorkEventArgs e)
         {
             //The IP Address.
             string ip = "127.0.0.1";
@@ -327,24 +363,42 @@ namespace Instructor
             byte[] buffer = new byte[client.ReceiveBufferSize];
 
             //Read the incoming stream.
-            int bytesRead = stream.Read(buffer, 0, client.ReceiveBufferSize);
+            int bytes = stream.Read(buffer, 0, client.ReceiveBufferSize);
 
             //Convert the data received into a string.
-            string dataReceived = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+            string data = Encoding.ASCII.GetString(buffer, 0, bytes);
 
-            MessageBox.Show(dataReceived);
+            //Convert the string to a Question object.
+            Question question = JsonConvert.DeserializeObject<Question>(data);
+
+            //Refresh the Symbol.
+            question.RefreshSymbol();
 
             //Add the question to the array.
-            //questions.Add(question);
-
-            //Update the array table.
-            //UpdateArrayTable();
+            questions.Add(question);
 
             //Close the Client connection.
             client.Close();
 
             //Stop listening for an answer.
             listener.Stop();
+        }
+
+        /// <summary>
+        /// Called when the application recieves an answer.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FoundAnswer(object sender, RunWorkerCompletedEventArgs e)
+        {
+            //Hide the Waiting Panel.
+            Panel_Waiting.Visible = false;
+
+            //Show the Question Panel.
+            Panel_Question.Visible = true;
+
+            //Update the array table.
+            UpdateArrayTable();
         }
     }
 }

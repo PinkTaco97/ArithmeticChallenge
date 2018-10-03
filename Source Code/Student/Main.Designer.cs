@@ -45,7 +45,7 @@
             this.Panel_Loading.BackColor = System.Drawing.SystemColors.HighlightText;
             this.Panel_Loading.Controls.Add(this.Label);
             this.Panel_Loading.Controls.Add(this.progressBar1);
-            this.Panel_Loading.Location = new System.Drawing.Point(20, 21);
+            this.Panel_Loading.Location = new System.Drawing.Point(20, 20);
             this.Panel_Loading.Margin = new System.Windows.Forms.Padding(10);
             this.Panel_Loading.Name = "Panel_Loading";
             this.Panel_Loading.Padding = new System.Windows.Forms.Padding(5);
@@ -93,6 +93,7 @@
             // 
             // Button_Send
             // 
+            this.Button_Send.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Send.Location = new System.Drawing.Point(357, 6);
             this.Button_Send.Margin = new System.Windows.Forms.Padding(0);
             this.Button_Send.Name = "Button_Send";
@@ -110,6 +111,8 @@
             this.Input.Name = "Input";
             this.Input.Size = new System.Drawing.Size(153, 38);
             this.Input.TabIndex = 1;
+            this.Input.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Input_KeyDown);
+            this.Input.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Input_KeyPress);
             // 
             // Output
             // 
