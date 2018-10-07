@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryNode.cs" />
+    <Compile Include="BinaryTree.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -24,6 +24,16 @@ namespace Instructor
         public DataTable arrayTable;
 
         /// <summary>
+        /// The Binary Tree.
+        /// </summary>
+        BinaryTree binaryTree = new BinaryTree();
+
+        /// <summary>
+        /// The Binary Tree View.
+        /// </summary>
+        TreeView binaryTreeView = new TreeView();
+
+        /// <summary>
         /// The Array of questions asked to the student.
         /// </summary>
         List<Question> questions = new List<Question>();
@@ -377,6 +387,9 @@ namespace Instructor
             //Add the question to the array.
             questions.Add(question);
 
+            //Add the question to the Binary Tree.
+            binaryTree.AddQuestion(question);
+
             //Close the Client connection.
             client.Close();
 
@@ -399,6 +412,33 @@ namespace Instructor
 
             //Update the array table.
             UpdateArrayTable();
+        }
+
+        /// <summary>
+        /// Called when the Seleted Index for the TabControl Changes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TabControl_SelectedIndex_Changed(object sender, EventArgs e)
+        {
+            //Console.WriteLine(TabControl.SelectedIndex);
+            //If we are on the Binary Tree Tab.
+            if (TabControl.SelectedIndex == 2)
+            {
+                binaryTree.Traverse();
+                binaryTree.Print();
+                Console.WriteLine("Test");
+            }
+        }
+
+        //Displays a binary tree in a tree view
+        private void DisplayTree(BinaryTree binaryTree)
+        {
+            //If the Binary Tree has a root node.
+            if(binaryTree.root != null)
+            {
+
+            }
         }
     }
 }

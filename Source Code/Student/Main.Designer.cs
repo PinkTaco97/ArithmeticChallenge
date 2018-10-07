@@ -140,6 +140,7 @@
             this.Name = "Main";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student";
             this.Shown += new System.EventHandler(this.Main_Shown);
             this.Panel_Loading.ResumeLayout(false);
