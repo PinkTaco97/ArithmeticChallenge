@@ -1,13 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Instructor
 {
     class BinaryTree
     {
+
+        /// <summary>
+        /// Reference to the main form
+        /// </summary>
+        Main main;
+
         /// <summary>
         /// The root of the tree.
         /// </summary>
@@ -21,10 +31,11 @@ namespace Instructor
         /// <summary>
         /// Constructor
         /// </summary>
-        public BinaryTree()
+        public BinaryTree(Main main)
         {
             //Set the root to null.
             this.root = null;
+            this.main = main;
         }
 
         /// <summary>
@@ -101,6 +112,31 @@ namespace Instructor
             for (int i = 0; i < sorted.Count; i++)
             {
                 Console.Write(sorted[i].question.answer + ",");
+            }
+        }
+
+        public void Display()
+        {
+            //If the Binary Tree has a root node.
+            if (this.root != null)
+            {
+                //Clear the Binary Tree View.
+                main.BinaryTreeView.Nodes.Clear();
+
+                //Create a new tree view node.
+                TreeNode root = new TreeNode();
+
+                //Make a reference to the roots question.
+                Question question = this.root.question;
+
+                //Set the new tree view nodes text.
+                root.Text = question.a + " " + question.operatorSymbol + " " + question.b + " = " + question.answer;
+
+                //Add the new tree view node to the TreeView.
+                main.BinaryTreeView.Nodes.Add(root);
+
+                //Display the Roots Children in the TreeView.
+                this.root.Display(root);
             }
         }
     }

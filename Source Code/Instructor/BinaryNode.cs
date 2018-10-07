@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Instructor
 {
@@ -128,6 +132,65 @@ namespace Instructor
                 return this.right.Search(question);
             }
             return null;
+        }
+
+        //Displays the nodes in the TreeView
+        public void Display(TreeNode parent)
+        {
+            //If this node has a left child.
+            if (this.left != null)
+            {
+                //Create a new tree view node.
+                TreeNode left = new TreeNode();
+
+                //Make a reference to the roots question.
+                Question question = this.left.question;
+
+                //Set the new tree view nodes text.
+                left.Text = "(Left) " + question.a + " " + question.operatorSymbol + " " + question.b + " = " + question.x;
+
+                //Add the new tree view node to its parent.
+                parent.Nodes.Add(left);
+
+                //Display the Left Child's children on the TreeView
+                this.left.Display(left);
+
+                //If this node has a right child.
+                if (this.right != null)
+                {
+                    //Create a new tree view node.
+                    TreeNode right = new TreeNode();
+
+                    //Make a reference to the roots question.
+                    Question questionn = this.right.question;
+
+                    //Set the new tree view nodes text.
+                    right.Text = "(Right) " + questionn.a + " " + questionn.operatorSymbol + " " + questionn.b + " = " + questionn.x;
+
+                    //Add the new tree view node to its parent.
+                    parent.Nodes.Add(right);
+
+                    //Display the Right Child's children on the TreeView
+                    this.right.Display(right);
+                }
+            }
+            else if (this.right != null)
+            {
+                //Create a new tree view node.
+                TreeNode right = new TreeNode();
+
+                //Make a reference to the roots question.
+                Question question = this.right.question;
+
+                //Set the new tree view nodes text.
+                right.Text = "(Right) " + question.a + " " + question.operatorSymbol + " " + question.b + " = " + question.x;
+
+                //Add the new tree view node to its parent.
+                parent.Nodes.Add(right);
+
+                //Display the Right Child's children on the TreeView
+                this.right.Display(right);
+            }
         }
     }
 }

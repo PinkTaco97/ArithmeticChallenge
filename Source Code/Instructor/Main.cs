@@ -26,12 +26,12 @@ namespace Instructor
         /// <summary>
         /// The Binary Tree.
         /// </summary>
-        BinaryTree binaryTree = new BinaryTree();
+        BinaryTree binaryTree;
 
         /// <summary>
         /// The Binary Tree View.
         /// </summary>
-        TreeView binaryTreeView = new TreeView();
+        //public static TreeView binaryTreeView = new TreeView();
 
         /// <summary>
         /// The Array of questions asked to the student.
@@ -103,6 +103,17 @@ namespace Instructor
                 //Set the column to autosize.
                 column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
+
+            //Setup the Binary Tree.
+            binaryTree = new BinaryTree(this);
+
+            binaryTree.AddQuestion(new Question(10, 1, 1));
+            binaryTree.AddQuestion(new Question(15, 1, 7));
+            binaryTree.AddQuestion(new Question(12, 1, 6));
+            binaryTree.AddQuestion(new Question(14, 1, 4));
+            binaryTree.AddQuestion(new Question(25, 1, 4));
+            binaryTree.AddQuestion(new Question(162, 1, 2));
+            binaryTree.AddQuestion(new Question(3, 1, 3));
         }
 
         /// <summary>
@@ -426,18 +437,7 @@ namespace Instructor
             if (TabControl.SelectedIndex == 2)
             {
                 binaryTree.Traverse();
-                binaryTree.Print();
-                Console.WriteLine("Test");
-            }
-        }
-
-        //Displays a binary tree in a tree view
-        private void DisplayTree(BinaryTree binaryTree)
-        {
-            //If the Binary Tree has a root node.
-            if(binaryTree.root != null)
-            {
-
+                binaryTree.Display();
             }
         }
     }
