@@ -106,14 +106,6 @@ namespace Instructor
 
             //Setup the Binary Tree.
             binaryTree = new BinaryTree(this);
-
-            binaryTree.AddQuestion(new Question(10, 1, 1));
-            binaryTree.AddQuestion(new Question(15, 1, 7));
-            binaryTree.AddQuestion(new Question(12, 1, 6));
-            binaryTree.AddQuestion(new Question(14, 1, 4));
-            binaryTree.AddQuestion(new Question(25, 1, 4));
-            binaryTree.AddQuestion(new Question(162, 1, 2));
-            binaryTree.AddQuestion(new Question(3, 1, 3));
         }
 
         /// <summary>
@@ -200,8 +192,9 @@ namespace Instructor
         /// <param name="e"></param>
         private void Button_Send_Click(object sender, EventArgs e)
         {
+            //Create a new question.
             Question question = new Question(Input_A.Value, Input_Operator.SelectedIndex, Input_B.Value);
-            
+
             //Connect to the Student and send the question
             SendQuestion(question);
         }

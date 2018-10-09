@@ -130,7 +130,7 @@ namespace Instructor
                 Question question = this.root.question;
 
                 //Set the new tree view nodes text.
-                root.Text = question.a + " " + question.operatorSymbol + " " + question.b + " = " + question.answer;
+                root.Text = "(Root) " + question.a.ToString("0.##") + " " + question.operatorSymbol + " " + question.b.ToString("0.##") + " = " + question.answer.ToString("0.##");
 
                 //Add the new tree view node to the TreeView.
                 main.BinaryTreeView.Nodes.Add(root);

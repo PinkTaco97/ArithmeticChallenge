@@ -147,7 +147,7 @@ namespace Instructor
                 Question question = this.left.question;
 
                 //Set the new tree view nodes text.
-                left.Text = "(Left) " + question.a + " " + question.operatorSymbol + " " + question.b + " = " + question.x;
+                left.Text = "(Left) " + question.a.ToString("0.##") + " " + question.operatorSymbol + " " + question.b.ToString("0.##") + " = " + question.answer.ToString("0.##");
 
                 //Add the new tree view node to its parent.
                 parent.Nodes.Add(left);
@@ -165,7 +165,7 @@ namespace Instructor
                     Question questionn = this.right.question;
 
                     //Set the new tree view nodes text.
-                    right.Text = "(Right) " + questionn.a + " " + questionn.operatorSymbol + " " + questionn.b + " = " + questionn.x;
+                    right.Text = "(Right) " + questionn.a.ToString("0.##") + " " + questionn.operatorSymbol + " " + questionn.b.ToString("0.##") + " = " + questionn.answer.ToString("0.##");
 
                     //Add the new tree view node to its parent.
                     parent.Nodes.Add(right);
@@ -183,7 +183,7 @@ namespace Instructor
                 Question question = this.right.question;
 
                 //Set the new tree view nodes text.
-                right.Text = "(Right) " + question.a + " " + question.operatorSymbol + " " + question.b + " = " + question.x;
+                right.Text = "(Right) " + question.a.ToString("0.##") + " " + question.operatorSymbol + " " + question.b.ToString("0.##") + " = " + question.answer.ToString("0.##");
 
                 //Add the new tree view node to its parent.
                 parent.Nodes.Add(right);

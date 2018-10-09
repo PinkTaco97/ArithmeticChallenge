@@ -270,9 +270,15 @@
             // 
             // BinaryTreeView
             // 
+            this.BinaryTreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BinaryTreeView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BinaryTreeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BinaryTreeView.Indent = 100;
+            this.BinaryTreeView.ItemHeight = 50;
             this.BinaryTreeView.Location = new System.Drawing.Point(10, 10);
             this.BinaryTreeView.Margin = new System.Windows.Forms.Padding(10);
             this.BinaryTreeView.Name = "BinaryTreeView";
+            this.BinaryTreeView.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.BinaryTreeView.Size = new System.Drawing.Size(920, 540);
             this.BinaryTreeView.TabIndex = 0;
             // 
